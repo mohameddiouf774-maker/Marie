@@ -1,73 +1,78 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Year
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', function() {
+  // Pages
+  const page1 = document.getElementById('page1');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+  
+  // Boutons navigation
+  const startBtn = document.getElementById('startBtn');
+  const toFinalBtn = document.getElementById('toFinal');
+  const noBtn = document.querySelector('.noBtn');
+  const yesBtn = document.querySelector('.yesBtn');
+  const finalMessage = document.getElementById('finalMessage');
+  const canvas = document.getElementById('fireworks');
+  const ctx = canvas.getContext('2d');
 
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
+  // Taille canvas
+  function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Page transitions
+  startBtn.addEventListener('click', () => {
+    page1.classList.remove('active'); page2.classList.add('active');
+  });
+  toFinalBtn.addEventListener('click', () => {
+    page2.classList.remove('active'); page3.classList.add('active');
+  });
+
+  // Non → rien
+  noBtn.addEventListener('click', () => {});
+
+  // Oui → animation feux d’artifice
+  yesBtn.addEventListener('click', () => {
+    yesBtn.style.transform = 'scale(1.5)';
+    finalMessage.textContent = "Je t'oblige ❤️!";
+    finalMessage.classList.remove('hidden');
+    launchFireworks();
+  });
+
+  // ===============================
+  // Simple feux d’artifice
+  // ===============================
+  function launchFireworks(){
+    const particles = [];
+    function random(min,max){return Math.random()*(max-min)+min;}
+    function createFirework(){
+      const x=random(0,canvas.width);
+      const y=random(0,canvas.height/2);
+      for(let i=0;i<100;i++){
+        particles.push({
+          x:x,y:y,
+          vx:random(-3,3),
+          vy:random(-5,-1),
+          alpha:1,
+          color:`hsl(${random(0,360)},100%,50%)`
+        });
       }
-    });
-  }, { threshold: 0.15 });
+    }
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    function animate(){
+      ctx.fillStyle='rgba(7,16,34,0.2)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      for(let i=particles.length-1;i>=0;i--){
+        const p=particles[i];
+        p.x+=p.vx; p.y+=p.vy; p.vy+=0.05; p.alpha-=0.01;
+        ctx.fillStyle=p.color; ctx.globalAlpha=p.alpha;
+        ctx.beginPath(); ctx.arc(p.x,p.y,2,0,Math.PI*2); ctx.fill();
+        if(p.alpha<=0) particles.splice(i,1);
+      }
+      ctx.globalAlpha=1;
+      if(particles.length>0) requestAnimationFrame(animate);
+    }
 
-  // Final reveal typing
-  const revealBtn = document.getElementById('revealBtn');
-  const questionEl = document.getElementById('question');
-  const finalText1 = document.getElementById('finalText1');
-  const finalText2 = document.getElementById('finalText2');
-
-  // Emotional build-up lines
-  const lines = [
-    "Il y a des jours où tout semble ordinaire — puis il y a des jours où je veux tout rendre plus doux pour toi.",
-    "Aujourd’hui, je veux que chaque instant soit consacré à te montrer combien tu comptes pour moi."
-  ];
-  const finalQuestion = "Veux-tu être ma Valentine ? ❤️";
-
-  // Fill the emotional paragraphs (appear subtly before typing question)
-  if (finalText1) finalText1.textContent = lines[0];
-  if (finalText2) finalText2.textContent = lines[1];
-
-  function typeText(el, text, speed = 50) {
-    return new Promise((resolve) => {
-      el.textContent = '';
-      let i = 0;
-      const timer = setInterval(() => {
-        el.textContent += text.charAt(i++);
-        if (i >= text.length) {
-          clearInterval(timer);
-          setTimeout(resolve, 300);
-        }
-      }, speed);
-    });
-  }
-
-  async function revealQuestion() {
-    if (!questionEl || revealBtn.disabled) return;
-    revealBtn.disabled = true;
-    revealBtn.setAttribute('aria-expanded', 'true');
-
-    // ensure question element visible and focused after typing
-    questionEl.classList.remove('hidden');
-    questionEl.setAttribute('aria-hidden', 'false');
-    questionEl.textContent = '';
-
-    await typeText(questionEl, finalQuestion, 60);
-
-    // focus for accessibility
-    questionEl.focus({preventScroll: true});
-    // small highlight animation
-    questionEl.animate([{ transform: 'scale(1.02)' }, { transform: 'none' }], { duration: 350 });
-  }
-
-  if (revealBtn) {
-    revealBtn.addEventListener('click', revealQuestion);
-    revealBtn.addEventListener('keyup', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') revealQuestion();
-    });
+    createFirework();
+    animate();
+    setInterval(createFirework,500);
   }
 });
