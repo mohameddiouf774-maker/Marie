@@ -1,0 +1,87 @@
+:root{
+  --bg:#fff7f7;
+  --text:#2b2b2b;
+  --accent:#c94b6b;
+  --muted:#666;
+  --max-width:900px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+  padding:24px;
+  display:flex;
+  justify-content:center;
+}
+main, body > section, .container{max-width:var(--max-width); width:100%}
+
+.hero{
+  text-align:center;
+  margin:24px 0;
+}
+h1{font-size:3rem; margin:0 0 8px}
+h2{font-size:1.25rem; margin:0 0 8px}
+.italic{font-style:italic; color:var(--muted)}
+
+.moment{
+  background:rgba(255,255,255,0.7);
+  padding:18px;
+  margin:16px 0;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+.moment img{
+  width:100%;
+  height:auto;
+  display:block;
+  margin-top:12px;
+  border-radius:8px;
+  object-fit:cover;
+}
+
+/* fade-in animation for initial sections */
+.fade-in{opacity:0; transform:translateY(8px); animation:fadeIn 700ms forwards}
+@keyframes fadeIn{to{opacity:1; transform:none}}
+
+/* final reveal area */
+.final{ text-align:center; margin:28px 0 }
+button#revealBtn{
+  background:var(--accent);
+  color:white;
+  border:0;
+  padding:12px 18px;
+  font-size:1rem;
+  border-radius:8px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(201,75,107,0.18);
+}
+button#revealBtn:active{transform:translateY(1px)}
+
+/* hidden / visible helpers */
+.hidden{display:none}
+#question{
+  margin-top:18px;
+  text-align:left;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  background:#fff;
+  padding:16px;
+  border-radius:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  /* start hidden state for smooth transition when revealed by JS */
+  opacity:1;
+  transform:none;
+}
+#finalQuestion{color:var(--accent); margin-top:12px}
+
+/* responsive */
+@media (max-width:520px){
+  h1{font-size:2rem}
+  body{padding:12px}
+  .moment{padding:12px}
+}
