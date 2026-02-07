@@ -1,87 +1,28 @@
 :root{
-  --bg-1: #071022; /* deep navy */
-  --bg-2: #0f1b33;
-  --card: rgba(255,248,250,0.04);
-  --pink: #f6c6d6; /* soft rose */
+  --bg: #071022;
+  --pink: #f6c6d6;
   --cream: #fff5f7;
-  --muted: #9aa6b2;
   --accent: #ff8fb3;
-  --max-width: 900px;
-  --radius: 14px;
-  font-family: "Playfair Display", serif;
+  --radius:14px;
+  font-family:"Playfair Display",serif;
 }
+*{box-sizing:border-box;margin:0;padding:0;}
+body,html{height:100%;background:var(--bg);color:var(--cream);}
+.wrap{max-width:900px;margin:0 auto;padding:20px;}
 
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 60%);color:var(--cream);-webkit-font-smoothing:antialiased}
-.wrap{max-width:var(--max-width);margin:28px auto;padding:20px}
-.site-header{display:flex;justify-content:flex-start;align-items:center;gap:16px;margin-bottom:12px}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#3a2b52,#612b55);display:grid;place-items:center;font-weight:700;color:var(--pink);font-size:22px;box-shadow:0 8px 30px rgba(0,0,0,0.4)}
-.title{font-size:18px;font-weight:700}
-.subtitle{font-size:12px;color:var(--muted)}
+.page{display:none;width:100%;height:100vh;position:relative;}
+.page.active{display:block;}
+.centered{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center;background-size:cover;background-position:center;}
+h1,h2,h3{margin:12px 0;}
+p{margin:8px 0;}
+.wolof{font-size:18px;color:var(--accent);}
+.moment{margin:20px 0;padding:16px;background:rgba(255,248,250,0.05);border-radius:var(--radius);}
+.moment img{width:100%;border-radius:12px;margin-top:10px;}
 
-/* Sections */
-section{margin:28px 0}
-.hero{padding:28px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
-.hero h1{font-size:36px;margin:0 0 8px;color:var(--cream);letter-spacing:0.2px}
-.intro{font-size:16px;color:rgba(255,245,247,0.9);line-height:1.6;max-width:760px}
+.btn{padding:12px 20px;margin:12px;font-size:16px;border-radius:10px;border:none;background:var(--pink);color:var(--bg);cursor:pointer;transition:transform 0.2s;}
+.btn:hover{transform:scale(1.05);}
 
-/* Moment cards */
-.moment{padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 30px rgba(2,6,23,0.6)}
-.moment h2{margin:0 0 8px;color:var(--pink)}
-.moment p{margin:0 0 12px;color:rgba(255,245,247,0.9)}
-.moment img{display:block;width:100%;height:auto;margin-top:12px;border-radius:10px;object-fit:cover;box-shadow:0 8px 24px rgba(2,6,23,0.6)}
-.caption{font-size:13px;color:var(--muted);margin-top:6px}
+.buttons{display:flex;gap:20px;justify-content:center;margin-top:20px;}
+.hidden{display:none;}
 
-/* Final */
-.final-card{padding:24px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));box-shadow:0 18px 40px rgba(2,6,23,0.7);text-align:center}
-.emote{font-size:16px;color:rgba(255,245,247,0.95);margin:8px 0}
-.reveal-area{margin-top:12px}
-#revealBtn{background:transparent;border:1px solid rgba(255,140,180,0.18);color:var(--pink);padding:12px 18px;border-radius:12px;cursor:pointer;font-weight:600}
-#revealBtn:focus{outline:2px solid rgba(255,140,180,0.16)}
-#question{margin-top:18px;font-size:28px;color:var(--cream);letter-spacing:0.6px}
-.hidden{display:none}
-
-/* Fade-in on scroll */
-.fade-in{opacity:0;transform:translateY(14px);transition:opacity 600ms ease, transform 600ms ease}
-.fade-in.in-view{opacity:1;transform:none}
-
-/* Responsive */
-@media (max-width:720px){
-  .hero h1{font-size:28px}
-  #question{font-size:22px}
-  .wrap{padding:16px}
-  .logo{width:48px;height:48px}
-}
-  padding:12px 18px;
-  font-size:1rem;
-  border-radius:8px;
-  cursor:pointer;
-  box-shadow:0 6px 18px rgba(201,75,107,0.18);
-}
-button#revealBtn:active{transform:translateY(1px)}
-
-/* hidden / visible helpers */
-.hidden{display:none}
-#question{
-  margin-top:18px;
-  text-align:left;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-  background:#fff;
-  padding:16px;
-  border-radius:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.05);
-  /* start hidden state for smooth transition when revealed by JS */
-  opacity:1;
-  transform:none;
-}
-#finalQuestion{color:var(--accent); margin-top:12px}
-
-/* responsive */
-@media (max-width:520px){
-  h1{font-size:2rem}
-  body{padding:12px}
-  .moment{padding:12px}
-}
+canvas#fireworks{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;}

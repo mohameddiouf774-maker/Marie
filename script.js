@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Pages
   const page1 = document.getElementById('page1');
   const page2 = document.getElementById('page2');
   const page3 = document.getElementById('page3');
   
-  // Boutons navigation
   const startBtn = document.getElementById('startBtn');
   const toFinalBtn = document.getElementById('toFinal');
   const noBtn = document.querySelector('.noBtn');
@@ -13,23 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
   const canvas = document.getElementById('fireworks');
   const ctx = canvas.getContext('2d');
 
-  // Taille canvas
   function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  // Page transitions
-  startBtn.addEventListener('click', () => {
-    page1.classList.remove('active'); page2.classList.add('active');
-  });
-  toFinalBtn.addEventListener('click', () => {
-    page2.classList.remove('active'); page3.classList.add('active');
-  });
+  // navigation pages
+  startBtn.addEventListener('click', () => {page1.classList.remove('active'); page2.classList.add('active');});
+  toFinalBtn.addEventListener('click', () => {page2.classList.remove('active'); page3.classList.add('active');});
+  noBtn.addEventListener('click', () => {}); // ne fait rien
 
-  // Non → rien
-  noBtn.addEventListener('click', () => {});
-
-  // Oui → animation feux d’artifice
   yesBtn.addEventListener('click', () => {
     yesBtn.style.transform = 'scale(1.5)';
     finalMessage.textContent = "Je t'oblige ❤️!";
@@ -37,9 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
     launchFireworks();
   });
 
-  // ===============================
-  // Simple feux d’artifice
-  // ===============================
   function launchFireworks(){
     const particles = [];
     function random(min,max){return Math.random()*(max-min)+min;}

@@ -1,82 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Marie — 13 février</title>
-  <meta name="description" content="Une journée pour Marie — 13 février. Une demande simple, sincère et élégante." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Marie — Saint-Valentin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="wrap">
-    <header class="site-header">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">M</div>
-        <div>
-          <div class="title">Pour Marie</div>
-          <div class="subtitle">13 février — Une journée à nous</div>
-        </div>
-      </div>
-    </header>
 
-    <section class="hero fade-in">
+<main class="wrap">
+
+  <!-- PAGE 1 : Accueil -->
+  <section id="page1" class="page active">
+    <div class="centered" style="background-image:url('12924524-2AC2-4EBA-9A03-D338A02ECA6C.jpg');">
       <h1>Marie</h1>
-      <p class="intro">
-        Je ne veux pas de grand spectacle, juste une journée pensée pour toi : calme, vraie, élégante.  
-        Ce que je te propose, c’est un temps pour être ensemble — simple, sincère, à hauteur de ce que nous sommes.
-      </p>
-    </section>
+      <p class="wolof">Nopp naa la, sama xarit — je t’aime profondément ❤️</p>
+      <button class="btn" id="startBtn">Découvrir la journée</button>
+    </div>
+  </section>
 
-    <section class="moment fade-in" id="midi">
-      <h2>🍽️ Le midi — Simple et vrai</h2>
-      <p>
-        À midi nous partagerons des moules et des frites.  
-        Rien de sophistiqué, juste la chaleur d'une table, le rire, et le plaisir d’être assis face à toi.
-      </p>
-      <p class="muted">Parce que les plus beaux instants sont souvent les plus simples.</p>
-      <img src="images/midi.jpg" alt="Assiette moules et frites">
-    </section>
+  <!-- PAGE 2 : Programme -->
+  <section id="page2" class="page">
+    <h2>Programme de notre journée — 13 février</h2>
+    
+    <div class="moment">
+      <h3>🍽️ Midi</h3>
+      <p>Moules et frites, simplicité et bonheur à être ensemble.</p>
+      <img src="midi.jpg" alt="Moules et frites">
+    </div>
 
-    <section class="moment fade-in" id="apres-midi">
-      <h2>🌿 L’après‑midi — Ton bien‑être</h2>
-      <p>
-        J’ai pensé à toi — un massage au bambou pour que tu te détendes, que tu te laisses aller.  
-        L’Instant Maeva, à Tours, prendra soin de toi pendant que je préparerai la suite.
-      </p>
-      <p class="muted">Un moment pour toi, offert avec douceur.</p>
-      <img src="images/massage.jpg" alt="Massage au bambou">
-      <p class="caption">L’Instant Maeva — Tours</p>
-    </section>
+    <div class="moment">
+      <h3>🌿 Après-midi</h3>
+      <p>Massage au bambou — L’Instant Maeva à Tours. Un moment pour toi.</p>
+      <img src="massage.jpg" alt="Massage au bambou">
+    </div>
 
-    <section class="moment fade-in" id="soir">
-      <h2>🌙 Le soir — Élégance intime</h2>
-      <p>
-        À 18h30 je t’emmènerai dîner. Maison Gloria, une table où l'ambiance est douce, le service discret, l’éclairage tamisé.  
-        Un cadre pensé pour que chaque parole compte.
-      </p>
-      <p class="muted">Un dîner pour suspendre le temps, et prendre soin de nous.</p>
-      <img src="images/soir.jpg" alt="Dîner romantique">
-      <p class="caption">Maison Gloria — Tours</p>
-    </section>
+    <div class="moment">
+      <h3>🌙 Soir</h3>
+      <p>Dîner romantique à Maison Gloria — Tours. Élégance et intimité.</p>
+      <img src="soir.jpg" alt="Dîner romantique">
+    </div>
 
-    <section class="final fade-in" id="final">
-      <div class="final-card">
-        <p id="finalText1" class="emote"></p>
-        <p id="finalText2" class="emote"></p>
+    <button class="btn" id="toFinal">Passons à la suite</button>
+  </section>
 
-        <div class="reveal-area" aria-live="polite">
-          <button id="revealBtn" type="button" aria-expanded="false">Lire ce que j’ai sur le cœur…</button>
-          <h2 id="question" class="hidden" tabindex="-1" aria-hidden="true"></h2>
-        </div>
+  <!-- PAGE 3 : Demande -->
+  <section id="page3" class="page">
+    <div class="centered" style="background-image:url('IMG_9420.jpg');">
+      <h2>Marie, une question pour toi…</h2>
+      <div class="buttons">
+        <button class="btn noBtn">Non</button>
+        <button class="btn yesBtn">Oui</button>
       </div>
-    </section>
+      <p id="finalMessage" class="hidden"></p>
+      <canvas id="fireworks"></canvas>
+    </div>
+  </section>
 
-    <footer class="site-footer">
-      © <span id="year"></span> — Avec tout mon cœur
-    </footer>
-  </main>
+</main>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
