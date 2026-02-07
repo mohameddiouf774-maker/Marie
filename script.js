@@ -1,74 +1,73 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // Year
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Final reveal typing
   const revealBtn = document.getElementById('revealBtn');
-  const question = document.getElementById('question');
-  const text1El = document.getElementById('text1');
-  const text2El = document.getElementById('text2');
-  const finalEl = document.getElementById('finalQuestion');
+  const questionEl = document.getElementById('question');
+  const finalText1 = document.getElementById('finalText1');
+  const finalText2 = document.getElementById('finalText2');
 
-  if (!revealBtn || !question || !text1El || !text2El || !finalEl) {
-    // éléments manquants — rien à faire
-    return;
-  }
-
+  // Emotional build-up lines
   const lines = [
-    "Je ne sais pas toujours trouver les mots justes, mais je veux que tu saches que chaque instant passé avec toi compte.",
-    "Tu rends les choses plus belles, plus simples et tellement vraies. J’aimerais continuer à te le prouver."
+    "Il y a des jours où tout semble ordinaire — puis il y a des jours où je veux tout rendre plus doux pour toi.",
+    "Aujourd’hui, je veux que chaque instant soit consacré à te montrer combien tu comptes pour moi."
   ];
-  const finalQuestion = "Veux-tu m’accompagner ce jour-là et partager ce moment avec moi ?";
+  const finalQuestion = "Veux-tu être ma Valentine ? ❤️";
 
-  function typeText(el, text, delay = 30) {
-    return new Promise(resolve => {
-      el.textContent = "";
+  // Fill the emotional paragraphs (appear subtly before typing question)
+  if (finalText1) finalText1.textContent = lines[0];
+  if (finalText2) finalText2.textContent = lines[1];
+
+  function typeText(el, text, speed = 50) {
+    return new Promise((resolve) => {
+      el.textContent = '';
       let i = 0;
-      const interval = setInterval(() => {
+      const timer = setInterval(() => {
         el.textContent += text.charAt(i++);
         if (i >= text.length) {
-          clearInterval(interval);
-          setTimeout(resolve, 350);
+          clearInterval(timer);
+          setTimeout(resolve, 300);
         }
-      }, delay);
+      }, speed);
     });
   }
 
-  let revealed = false;
-  async function reveal() {
-    if (revealed) return;
-    revealed = true;
-
-    // afficher la zone (elle est .hidden dans le HTML)
-    question.classList.remove('hidden');
-    question.setAttribute('aria-hidden', 'false');
-
-    // pour une transition douce
-    question.style.opacity = 0;
-    question.style.transform = 'translateY(6px)';
-    // allow layout then animate
-    requestAnimationFrame(() => {
-      question.style.transition = '300ms ease';
-      question.style.opacity = 1;
-      question.style.transform = 'none';
-    });
-
-    // taper les lignes
-    await typeText(text1El, lines[0], 28);
-    await typeText(text2El, lines[1], 28);
-    await typeText(finalEl, finalQuestion, 32);
-
-    // désactiver le bouton pour éviter répéter
+  async function revealQuestion() {
+    if (!questionEl || revealBtn.disabled) return;
     revealBtn.disabled = true;
-    revealBtn.setAttribute('aria-disabled', 'true');
-    revealBtn.style.opacity = 0.85;
-    // placer le focus sur la question finale pour accessibilité
-    finalEl.tabIndex = -1;
-    finalEl.focus({preventScroll:true});
+    revealBtn.setAttribute('aria-expanded', 'true');
+
+    // ensure question element visible and focused after typing
+    questionEl.classList.remove('hidden');
+    questionEl.setAttribute('aria-hidden', 'false');
+    questionEl.textContent = '';
+
+    await typeText(questionEl, finalQuestion, 60);
+
+    // focus for accessibility
+    questionEl.focus({preventScroll: true});
+    // small highlight animation
+    questionEl.animate([{ transform: 'scale(1.02)' }, { transform: 'none' }], { duration: 350 });
   }
 
-  revealBtn.addEventListener('click', reveal);
-  // support clavier (Entrée/Espace)
-  revealBtn.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      reveal();
-    }
-  });
+  if (revealBtn) {
+    revealBtn.addEventListener('click', revealQuestion);
+    revealBtn.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') revealQuestion();
+    });
+  }
 });

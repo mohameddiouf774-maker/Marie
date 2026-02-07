@@ -1,183 +1,82 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>St Valentin Marie</title>
-    <meta name="description" content="Site officiel St Valentin Marie — fleurs, événements et cadeaux pour la Saint-Valentin." />
-    <style>
-        :root{
-            --bg:#fff7fb;
-            --accent:#e63946;
-            --muted:#6b6b6b;
-            --card:#fff;
-            --radius:12px;
-            --glass: rgba(255,255,255,0.6);
-            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-        }
-        *{box-sizing:border-box}
-        html,body{height:100%;margin:0;background:linear-gradient(180deg,#fff7fb 0%, #fff 60%);color:#222}
-        header{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;background:transparent;position:sticky;top:0;backdrop-filter:blur(6px);z-index:10}
-        .brand{display:flex;gap:12px;align-items:center}
-        .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#ffccd5,#ffd6e0);display:grid;place-items:center;font-weight:700;color:var(--accent);font-size:20px;box-shadow:0 6px 18px rgba(230,57,70,0.12)}
-        nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
-        nav a:hover{color:var(--accent)}
-        .container{max-width:1100px;margin:32px auto;padding:0 20px}
-        .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
-        .hero-card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:0 8px 30px rgba(230,57,70,0.06)}
-        h1{margin:0 0 8px;font-size:32px;color:#2b2b2b}
-        p.lead{margin:0 0 18px;color:var(--muted)}
-        .cta{display:inline-block;padding:10px 16px;background:var(--accent);color:#fff;border-radius:10px;text-decoration:none;font-weight:700}
-        .heart-illustration{display:flex;align-items:center;justify-content:center;height:240px;border-radius:12px;background:linear-gradient(135deg,#fff0f2,#fff7fb);box-shadow:inset 0 -10px 30px rgba(230,57,70,0.03)}
-        /* Grid sections */
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px}
-        .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
-        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-        .thumb{height:110px;border-radius:10px;background-size:cover;background-position:center}
-        .contact{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start;margin-top:26px}
-        form{display:flex;flex-direction:column;gap:10px}
-        input,textarea,button{padding:10px;border-radius:10px;border:1px solid #e6e6e6;font-size:14px}
-        textarea{min-height:140px;resize:vertical}
-        .muted{color:var(--muted);font-size:14px}
-        footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px;margin-top:40px}
-        @media (max-width:880px){
-            .hero{grid-template-columns:1fr;gap:18px}
-            .gallery{grid-template-columns:repeat(2,1fr)}
-            .contact{grid-template-columns:1fr}
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marie — 13 février</title>
+  <meta name="description" content="Une journée pour Marie — 13 février. Une demande simple, sincère et élégante." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="brand">
-            <div class="logo" aria-hidden="true">SV</div>
-            <div>
-                <div style="font-weight:800">St Valentin Marie</div>
-                <div style="font-size:13px;color:var(--muted)">Fleurs & cadeaux</div>
-            </div>
+  <main class="wrap">
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">M</div>
+        <div>
+          <div class="title">Pour Marie</div>
+          <div class="subtitle">13 février — Une journée à nous</div>
         </div>
-        <nav aria-label="Navigation principale">
-            <a href="#about">À propos</a>
-            <a href="#gallery">Galerie</a>
-            <a href="#contact">Contact</a>
-        </nav>
+      </div>
     </header>
 
-    <main class="container" role="main">
-        <section class="hero">
-            <div class="hero-card">
-                <h1>Bienvenue chez St Valentin Marie</h1>
-                <p class="lead">Créations florales, boîtes cadeaux et événements sur mesure pour célébrer l'amour. Livraison locale et personnalisations disponibles.</p>
-                <p style="margin:16px 0">
-                    <a class="cta" href="#contact">Demander un devis</a>
-                    <a style="margin-left:12px;color:var(--muted);font-weight:700" href="#gallery">Voir la galerie →</a>
-                </p>
+    <section class="hero fade-in">
+      <h1>Marie</h1>
+      <p class="intro">
+        Je ne veux pas de grand spectacle, juste une journée pensée pour toi : calme, vraie, élégante.  
+        Ce que je te propose, c’est un temps pour être ensemble — simple, sincère, à hauteur de ce que nous sommes.
+      </p>
+    </section>
 
-                <div class="grid" aria-hidden="true">
-                    <div class="card">
-                        <strong>Livraison locale</strong>
-                        <div class="muted">Options express et créneaux flexibles</div>
-                    </div>
-                    <div class="card">
-                        <strong>Artisan floriste</strong>
-                        <div class="muted">Compositions uniques, fleurs de saison</div>
-                    </div>
-                    <div class="card">
-                        <strong>Cadeaux & packaging</strong>
-                        <div class="muted">Boîtes, cartes et emballages personnalisés</div>
-                    </div>
-                </div>
-            </div>
+    <section class="moment fade-in" id="midi">
+      <h2>🍽️ Le midi — Simple et vrai</h2>
+      <p>
+        À midi nous partagerons des moules et des frites.  
+        Rien de sophistiqué, juste la chaleur d'une table, le rire, et le plaisir d’être assis face à toi.
+      </p>
+      <p class="muted">Parce que les plus beaux instants sont souvent les plus simples.</p>
+      <img src="images/midi.jpg" alt="Assiette moules et frites">
+    </section>
 
-            <div class="heart-illustration" aria-hidden="true">
-                <!-- simple SVG coeur décoratif -->
-                <svg width="220" height="220" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <defs>
-                        <linearGradient id="g" x1="0" x2="1">
-                            <stop offset="0" stop-color="#ff9aa2"/><stop offset="1" stop-color="#ff6b81"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M12 21s-7.5-4.35-10-7.5C-0.5 7 4 3.5 7 6.5 8.5 8 12 11 12 11s3.5-3 5-4.5C20 3.5 24.5 7 22 13.5 19.5 16.65 12 21 12 21z" fill="url(#g)" opacity="0.98"/>
-                </svg>
-            </div>
-        </section>
+    <section class="moment fade-in" id="apres-midi">
+      <h2>🌿 L’après‑midi — Ton bien‑être</h2>
+      <p>
+        J’ai pensé à toi — un massage au bambou pour que tu te détendes, que tu te laisses aller.  
+        L’Instant Maeva, à Tours, prendra soin de toi pendant que je préparerai la suite.
+      </p>
+      <p class="muted">Un moment pour toi, offert avec douceur.</p>
+      <img src="images/massage.jpg" alt="Massage au bambou">
+      <p class="caption">L’Instant Maeva — Tours</p>
+    </section>
 
-        <section id="about" style="margin-top:28px;">
-            <div class="card">
-                <h2 style="margin-top:0">À propos</h2>
-                <p class="muted">St Valentin Marie est une petite maison florale dédiée à l'art de composer pour les moments précieux. Nous privilégions les fleurs locales et des emballages responsables.</p>
-            </div>
-        </section>
+    <section class="moment fade-in" id="soir">
+      <h2>🌙 Le soir — Élégance intime</h2>
+      <p>
+        À 18h30 je t’emmènerai dîner. Maison Gloria, une table où l'ambiance est douce, le service discret, l’éclairage tamisé.  
+        Un cadre pensé pour que chaque parole compte.
+      </p>
+      <p class="muted">Un dîner pour suspendre le temps, et prendre soin de nous.</p>
+      <img src="images/soir.jpg" alt="Dîner romantique">
+      <p class="caption">Maison Gloria — Tours</p>
+    </section>
 
-        <section id="gallery" style="margin-top:18px;">
-            <h3 style="margin:12px 0 8px">Galerie</h3>
-            <div class="gallery" role="list">
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#ffd6e0,#fff);"></div>
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#ffe1e8,#fff);"></div>
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#ffdbe2,#fff);"></div>
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#fff0f4,#fff);"></div>
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#ffd6e0,#ffeef2);"></div>
-                <div class="thumb" role="listitem" style="background-image:linear-gradient(135deg,#ffe8ec,#fff);"></div>
-            </div>
-        </section>
+    <section class="final fade-in" id="final">
+      <div class="final-card">
+        <p id="finalText1" class="emote"></p>
+        <p id="finalText2" class="emote"></p>
 
-        <section id="contact" class="contact" aria-labelledby="contactHeading">
-            <div class="card" style="padding:18px">
-                <h3 id="contactHeading" style="margin-top:0">Contact & commandes</h3>
-                <p class="muted">Remplissez le formulaire ou appelez-nous au <strong>+33 6 12 34 56 78</strong> pour une réponse rapide.</p>
+        <div class="reveal-area" aria-live="polite">
+          <button id="revealBtn" type="button" aria-expanded="false">Lire ce que j’ai sur le cœur…</button>
+          <h2 id="question" class="hidden" tabindex="-1" aria-hidden="true"></h2>
+        </div>
+      </div>
+    </section>
 
-                <form id="contactForm" novalidate>
-                    <label class="muted">Nom
-                        <input type="text" name="name" required placeholder="Votre nom">
-                    </label>
-                    <label class="muted">Email
-                        <input type="email" name="email" required placeholder="votre@exemple.com">
-                    </label>
-                    <label class="muted">Message
-                        <textarea name="message" required placeholder="Détails de la commande, date, adresse..."></textarea>
-                    </label>
-                    <div style="display:flex;gap:8px;align-items:center">
-                        <button type="submit" style="background:var(--accent);color:#fff;border:none;cursor:pointer">Envoyer</button>
-                        <div id="formStatus" class="muted" aria-live="polite"></div>
-                    </div>
-                </form>
-            </div>
-
-            <aside class="card">
-                <h4 style="margin-top:0">Infos pratiques</h4>
-                <p class="muted"><strong>Adresse :</strong> 12 Rue des Fleurs, 75000 Paris</p>
-                <p class="muted"><strong>Heures :</strong> Mar–Sam 10:00–18:00</p>
-                <p class="muted"><strong>Sujet rapide :</strong> livraison, ateliers, événements</p>
-            </aside>
-        </section>
-    </main>
-
-    <footer>
-        © <span id="year"></span> St Valentin Marie — Fait avec soin
+    <footer class="site-footer">
+      © <span id="year"></span> — Avec tout mon cœur
     </footer>
+  </main>
 
-    <script>
-        // small interactivity: form feedback and year
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const form = document.getElementById('contactForm');
-        const status = document.getElementById('formStatus');
-
-        form.addEventListener('submit', function(e){
-            e.preventDefault();
-            status.textContent = 'Envoi en cours…';
-            // Simple client-side validation
-            const data = new FormData(form);
-            if(!data.get('name') || !data.get('email') || !data.get('message')){
-                status.textContent = 'Merci de remplir tous les champs.';
-                return;
-            }
-            // Simuler envoi
-            setTimeout(()=> {
-                status.textContent = 'Merci ! Votre message a été envoyé.';
-                form.reset();
-            }, 900);
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
